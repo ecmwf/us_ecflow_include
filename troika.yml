@@ -1,0 +1,18 @@
+sites:
+  localhost:
+    type: direct
+    connection: local
+  aa:
+    type: slurm
+    connection: ssh
+    host: aa-login
+    pre_submit: ["create_output_dir"]
+    preprocess: ["remove_top_blank_lines", "slurm_add_output", "slurm_bubble"]
+    sbatch_command: ecsbatch
+    scancel_command: 'scancel --signal=TERM -b'
+  ecs:
+    type: slurm
+    connection: ssh
+    host: ecs-login
+    pre_submit: ["create_output_dir"]
+    preprocess: ["remove_top_blank_lines", "slurm_add_output", "slurm_bubble"]
