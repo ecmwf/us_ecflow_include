@@ -7,7 +7,7 @@ sites:
   aa:
     type: slurm
     connection: ssh
-    host: aa-emos-batch
+    host: aa-login
     pre_submit: ["create_output_dir"]
     preprocess: ["remove_top_blank_lines", "slurm_add_output", "slurm_bubble"]
     at_exit: ["copy_submit_logfile"]
@@ -27,7 +27,7 @@ sites:
   ab:
     type: slurm
     connection: ssh
-    host: ab-emos-batch
+    host: ab-login
     pre_submit: ["create_output_dir"]
     preprocess: ["remove_top_blank_lines", "slurm_add_output", "slurm_bubble"]
     at_exit: ["copy_submit_logfile"]
@@ -43,3 +43,14 @@ sites:
     at_exit: ["copy_submit_logfile"]
     sbatch_command: "ecsbatch"
     scancel_command: 'scancel -f -s 2 {pid} && sleep 10 && scancel -f -s 15 {pid}'
+
+  ecs:
+    type: slurm
+    connection: ssh
+    host: ecs-login
+    pre_submit: ["create_output_dir"]
+    preprocess: ["remove_top_blank_lines", "slurm_add_output", "slurm_bubble"]
+    at_exit: ["copy_submit_logfile"]
+    sbatch_command: "ecsbatch"
+    scancel_command: 'scancel -f -s 2 {pid} && sleep 10 && scancel -f -s 15 {pid}'
+
