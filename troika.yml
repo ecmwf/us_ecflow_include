@@ -1,18 +1,45 @@
+---
 sites:
   localhost:
     type: direct
     connection: local
+
   aa:
     type: slurm
     connection: ssh
-    host: aa-login
+    host: aa-emos-batch
     pre_submit: ["create_output_dir"]
     preprocess: ["remove_top_blank_lines", "slurm_add_output", "slurm_bubble"]
-    sbatch_command: ecsbatch
-    scancel_command: 'scancel --signal=TERM -b'
-  ecs:
+    at_exit: ["copy_submit_logfile"]
+    sbatch_command: "ecsbatch"
+    scancel_command: 'scancel -f -s 2 {pid} && sleep 10 && scancel -f -s 15 {pid}'
+
+  aa-batch:
     type: slurm
     connection: ssh
-    host: ecs-login
+    host: aa-batch
     pre_submit: ["create_output_dir"]
     preprocess: ["remove_top_blank_lines", "slurm_add_output", "slurm_bubble"]
+    at_exit: ["copy_submit_logfile"]
+    sbatch_command: "ecsbatch"
+    scancel_command: 'scancel -f -s 2 {pid} && sleep 10 && scancel -f -s 15 {pid}'
+
+  ab:
+    type: slurm
+    connection: ssh
+    host: ab-emos-batch
+    pre_submit: ["create_output_dir"]
+    preprocess: ["remove_top_blank_lines", "slurm_add_output", "slurm_bubble"]
+    at_exit: ["copy_submit_logfile"]
+    sbatch_command: "ecsbatch"
+    scancel_command: 'scancel -f -s 2 {pid} && sleep 10 && scancel -f -s 15 {pid}'
+
+  ab-batch:
+    type: slurm
+    connection: ssh
+    host: ab-batch
+    pre_submit: ["create_output_dir"]
+    preprocess: ["remove_top_blank_lines", "slurm_add_output", "slurm_bubble"]
+    at_exit: ["copy_submit_logfile"]
+    sbatch_command: "ecsbatch"
+    scancel_command: 'scancel -f -s 2 {pid} && sleep 10 && scancel -f -s 15 {pid}'
