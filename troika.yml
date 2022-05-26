@@ -12,7 +12,7 @@ sites:
     preprocess: ["remove_top_blank_lines", "slurm_add_output", "slurm_bubble"]
     at_exit: ["copy_submit_logfile"]
     sbatch_command: "ecsbatch"
-    scancel_command: 'scancel -f -s 2 {pid} && sleep 10 && scancel -f -s 15 {pid}'
+    scancel_command: 'scancel -f -s 15'
 
   aa-batch:
     type: slurm
@@ -22,7 +22,7 @@ sites:
     preprocess: ["remove_top_blank_lines", "slurm_add_output", "slurm_bubble"]
     at_exit: ["copy_submit_logfile"]
     sbatch_command: "ecsbatch"
-    scancel_command: 'scancel -f -s 2 {pid} && sleep 10 && scancel -f -s 15 {pid}'
+    scancel_command: 'scancel -f -s 15'
 
   ab:
     type: slurm
@@ -32,7 +32,7 @@ sites:
     preprocess: ["remove_top_blank_lines", "slurm_add_output", "slurm_bubble"]
     at_exit: ["copy_submit_logfile"]
     sbatch_command: "ecsbatch"
-    scancel_command: 'scancel -f -s 2 {pid} && sleep 10 && scancel -f -s 15 {pid}'
+    scancel_command: 'scancel -f -s 15'
 
   ab-batch:
     type: slurm
@@ -42,7 +42,7 @@ sites:
     preprocess: ["remove_top_blank_lines", "slurm_add_output", "slurm_bubble"]
     at_exit: ["copy_submit_logfile"]
     sbatch_command: "ecsbatch"
-    scancel_command: 'scancel -f -s 2 {pid} && sleep 10 && scancel -f -s 15 {pid}'
+    scancel_command: 'scancel -f -s 15'
 
   ecs:
     type: slurm
@@ -52,5 +52,5 @@ sites:
     preprocess: ["remove_top_blank_lines", "slurm_add_output", "slurm_bubble"]
     at_exit: ["copy_submit_logfile"]
     sbatch_command: "ecsbatch"
-    scancel_command: 'scancel -f -s 2 {pid} && sleep 10 && scancel -f -s 15 {pid}'
+    scancel_command: 'scancel -f -s 15'
 
