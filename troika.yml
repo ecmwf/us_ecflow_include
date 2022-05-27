@@ -7,17 +7,6 @@ sites:
   aa:
     type: slurm
     connection: ssh
-    host: aa-login
-    kill_sequence: [[0, 2], [5, 9]]
-    pre_submit: ["create_output_dir"]
-    preprocess: ["remove_top_blank_lines", "slurm_add_output", "slurm_bubble"]
-    at_exit: ["copy_submit_logfile"]
-    sbatch_command: "ecsbatch"
-    scancel_command: 'scancel -f'
-
-  aa-batch:
-    type: slurm
-    connection: ssh
     host: aa-batch
     kill_sequence: [[0, 2], [5, 9]]
     pre_submit: ["create_output_dir"]
@@ -29,7 +18,7 @@ sites:
   ab:
     type: slurm
     connection: ssh
-    host: ab-login
+    host: ab-batch
     kill_sequence: [[0, 2], [5, 9]]
     pre_submit: ["create_output_dir"]
     preprocess: ["remove_top_blank_lines", "slurm_add_output", "slurm_bubble"]
@@ -37,10 +26,21 @@ sites:
     sbatch_command: "ecsbatch"
     scancel_command: 'scancel -f'
 
-  ab-batch:
+  ac:
     type: slurm
     connection: ssh
-    host: ab-batch
+    host: ac-batch
+    kill_sequence: [[0, 2], [5, 9]]
+    pre_submit: ["create_output_dir"]
+    preprocess: ["remove_top_blank_lines", "slurm_add_output", "slurm_bubble"]
+    at_exit: ["copy_submit_logfile"]
+    sbatch_command: "ecsbatch"
+    scancel_command: 'scancel -f'
+
+  ad:
+    type: slurm
+    connection: ssh
+    host: ad-batch
     kill_sequence: [[0, 2], [5, 9]]
     pre_submit: ["create_output_dir"]
     preprocess: ["remove_top_blank_lines", "slurm_add_output", "slurm_bubble"]
@@ -51,17 +51,6 @@ sites:
   ecs:
     type: slurm
     connection: ssh
-    host: ecs-login
-    kill_sequence: [[0, 2], [5, 9]]
-    pre_submit: ["create_output_dir"]
-    preprocess: ["remove_top_blank_lines", "slurm_add_output", "slurm_bubble"]
-    at_exit: ["copy_submit_logfile"]
-    sbatch_command: "ecsbatch"
-    scancel_command: 'scancel -f'
-
-  ecs-batch:
-    type: slurm
-    connection: ssh
     host: ecs-batch
     kill_sequence: [[0, 2], [5, 9]]
     pre_submit: ["create_output_dir"]
@@ -69,4 +58,3 @@ sites:
     at_exit: ["copy_submit_logfile"]
     sbatch_command: "ecsbatch"
     scancel_command: 'scancel -f'
-
