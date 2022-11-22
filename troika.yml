@@ -13,7 +13,7 @@ sites:
     preprocess: ["remove_top_blank_lines", "slurm_add_output", "slurm_bubble"]
     at_exit: ["copy_submit_logfile"]
     sbatch_command: "ecsbatch"
-    scancel_command: 'scancel -f'
+    scancel_command: 'ecscancel -f'
 
   ab:
     type: slurm
@@ -24,7 +24,7 @@ sites:
     preprocess: ["remove_top_blank_lines", "slurm_add_output", "slurm_bubble"]
     at_exit: ["copy_submit_logfile"]
     sbatch_command: "ecsbatch"
-    scancel_command: 'scancel -f'
+    scancel_command: 'ecscancel -f'
 
   ac:
     type: slurm
@@ -35,7 +35,7 @@ sites:
     preprocess: ["remove_top_blank_lines", "slurm_add_output", "slurm_bubble"]
     at_exit: ["copy_submit_logfile"]
     sbatch_command: "ecsbatch"
-    scancel_command: 'scancel -f'
+    scancel_command: 'ecscancel -f'
 
   ad:
     type: slurm
@@ -46,7 +46,7 @@ sites:
     preprocess: ["remove_top_blank_lines", "slurm_add_output", "slurm_bubble"]
     at_exit: ["copy_submit_logfile"]
     sbatch_command: "ecsbatch"
-    scancel_command: 'scancel -f'
+    scancel_command: 'ecscancel -f'
 
   hpc:
     type: slurm
@@ -57,7 +57,7 @@ sites:
     preprocess: ["remove_top_blank_lines", "slurm_add_output", "slurm_bubble"]
     at_exit: ["copy_submit_logfile"]
     sbatch_command: "ecsbatch"
-    scancel_command: 'scancel -f'
+    scancel_command: 'ecscancel -f'
 
   hpc2020:
     type: slurm
@@ -68,7 +68,7 @@ sites:
     preprocess: ["remove_top_blank_lines", "slurm_add_output", "slurm_bubble"]
     at_exit: ["copy_submit_logfile"]
     sbatch_command: "ecsbatch"
-    scancel_command: 'scancel -f'
+    scancel_command: 'ecscancel -f'
 
   ecs:
     type: slurm
@@ -79,4 +79,4 @@ sites:
     preprocess: ["remove_top_blank_lines", "slurm_add_output", "slurm_bubble"]
     at_exit: ["copy_submit_logfile"]
     sbatch_command: "ecsbatch"
-    scancel_command: 'scancel -f'
+    scancel_command: 'ecscancel -f'
