@@ -4,79 +4,37 @@ sites:
     type: direct
     connection: local
 
-  aa:
-    type: slurm
-    connection: ssh
-    host: aa-batch
-    kill_sequence: [[5, 2], [10, 9]]
-    pre_submit: ["create_output_dir"]
-    preprocess: ["remove_top_blank_lines", "slurm_add_output", "slurm_bubble"]
-    at_exit: ["copy_submit_logfile"]
-    sbatch_command: "ecsbatch"
-    scancel_command: 'ecscancel -f'
-
-  ab:
-    type: slurm
-    connection: ssh
-    host: ab-batch
-    kill_sequence: [[5, 2], [10, 9]]
-    pre_submit: ["create_output_dir"]
-    preprocess: ["remove_top_blank_lines", "slurm_add_output", "slurm_bubble"]
-    at_exit: ["copy_submit_logfile"]
-    sbatch_command: "ecsbatch"
-    scancel_command: 'ecscancel -f'
-
-  ac:
-    type: slurm
-    connection: ssh
-    host: ac-batch
-    kill_sequence: [[5, 2], [10, 9]]
-    pre_submit: ["create_output_dir"]
-    preprocess: ["remove_top_blank_lines", "slurm_add_output", "slurm_bubble"]
-    at_exit: ["copy_submit_logfile"]
-    sbatch_command: "ecsbatch"
-    scancel_command: 'ecscancel -f'
-
-  ad:
-    type: slurm
-    connection: ssh
-    host: ad-batch
-    kill_sequence: [[5, 2], [10, 9]]
-    pre_submit: ["create_output_dir"]
-    preprocess: ["remove_top_blank_lines", "slurm_add_output", "slurm_bubble"]
-    at_exit: ["copy_submit_logfile"]
-    sbatch_command: "ecsbatch"
-    scancel_command: 'ecscancel -f'
-
-  hpc:
+  hpc: &default
     type: slurm
     connection: ssh
     host: hpc-batch
-    kill_sequence: [[5, 2], [10, 9]]
     pre_submit: ["create_output_dir"]
     preprocess: ["remove_top_blank_lines", "slurm_add_output", "slurm_bubble"]
     at_exit: ["copy_submit_logfile"]
+    post_kill: ["abort_on_ecflow"]
     sbatch_command: "ecsbatch"
-    scancel_command: 'ecscancel -f'
+    scancel_command: 'ecscancel'
+
+  aa:
+    << : *default
+    host: aa-batch
+
+  ab:
+    << : *default
+    host: ab-batch
+
+  ac:
+    << : *default
+    host: ac-batch
+
+  ad:
+    << : *default
+    host: ad-batch
 
   hpc2020:
-    type: slurm
-    connection: ssh
+    << : *default
     host: hpc2020-batch
-    kill_sequence: [[5, 2], [10, 9]]
-    pre_submit: ["create_output_dir"]
-    preprocess: ["remove_top_blank_lines", "slurm_add_output", "slurm_bubble"]
-    at_exit: ["copy_submit_logfile"]
-    sbatch_command: "ecsbatch"
-    scancel_command: 'ecscancel -f'
 
   ecs:
-    type: slurm
-    connection: ssh
+    << : *default
     host: ecs-batch
-    kill_sequence: [[5, 2], [10, 9]]
-    pre_submit: ["create_output_dir"]
-    preprocess: ["remove_top_blank_lines", "slurm_add_output", "slurm_bubble"]
-    at_exit: ["copy_submit_logfile"]
-    sbatch_command: "ecsbatch"
-    scancel_command: 'ecscancel -f'

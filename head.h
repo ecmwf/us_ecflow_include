@@ -42,6 +42,9 @@ export ECF_NAME=%ECF_NAME%    # The name of this current task
 export ECF_PASS=%ECF_PASS%    # A unique password
 export ECF_TRYNO=%ECF_TRYNO%  # Current try number of the task
 export ECF_RID=${SLURM_JOB_ID:-$$}
+# For Troika to handle the proper abort of pending jobs on explicit kill
+# troika ecflow_name=%ECF_NAME%
+# troika ecflow_pass=%ECF_PASS%
 
 module load ecflow/%ECF_VERSION%
 
